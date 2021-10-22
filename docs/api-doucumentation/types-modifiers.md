@@ -541,7 +541,7 @@ class Paper:
 ```
 
 #### replacer
-Replace the pattern with new substring.
+Replace the regular expression pattern with new substring.
 
 #### Usage
 `replacer(str | Callable | Types, str | Callable | Types)`
@@ -600,7 +600,7 @@ class Student:
 ```
 
 #### padstart
-Pad the current string of the start with a given char to reache a given length.
+Pad the current string of the start with a given char to reach a given length.
 
 #### Usage
 `padstart(str | Callable | Types, int | Callable | Types)`
@@ -613,7 +613,7 @@ class Entrants:
  ```
 
 #### padend
-Pad the current string of the end with a given char to reache a given length.
+Pad the current string of the end with a given char to reach a given length.
 #### Usage
 `padend(str | Callable | Types, int | Callable | Types)`
 
@@ -653,38 +653,39 @@ class User:
 ```
 
 #### filter
-Filter the list of the field with the help of a function.
+Filter the list with a function.
 #### Usage
-`filter(callable)`
+`filter(Callable)`
 
 #### Examples
 ```python
 @jsonclass
 class User:
-    name: list[str] = typse.listof(str).filter(['a', 'b', 'c', 'd']).required
+    name: list[str] = typse.listof(str).filter(is_existing_name).required
 ```
 
 #### map
-Return a map list after applying the given function to each item of the list of the field.
+Map the list with a function.
 
 #### Usage
-`map(callable)`
+`map(Callable)`
 
 #### Examples
 ```python
 @jsonclass
 class User:
-    name: list[str] = types.listof(str).map(['Victor', 'Ben', 'Snoopy']).required
+    name: list[str] = types.listof(str).map(convert_name).required
 ```
 
 #### sqrt
-Return the square root of any number that can not less than 0.
+The square root of the number value.
 
 #### Examples
 ```python
 @jsonclass
 class Math:
-    num1: int = types.int.sqrt.required    num2: float = types.float.sqrt.required
+    num1: int = types.int.sqrt.required
+    num2: float = types.float.sqrt.required
 ```
 
 #### pow
@@ -701,7 +702,8 @@ class Math:
 ```
 
 #### mod
-Return the remainder after the division of the value of field by another value. The value of field can be either int or float.
+Return the remainder after the division of the value of field by another value.
+The value of field can be either int or float.
 
 #### Usage
 `mod(int | float | Callable | Types)`
@@ -715,7 +717,7 @@ class Math:
 
 #### div
 
-Divide the value of field by another value.
+Divide the value of field by the passed in value.
 
 #### Usage
 `div(int | float | Callable | Types)`
@@ -728,7 +730,7 @@ class Math:
 ```
 
 #### mul
-Multiply the value of field.
+Multiply the value of the field by the passed in value.
 
 #### Usage
 `mul(int | float | Callable | Types)`
@@ -741,7 +743,7 @@ class Math:
 ```
 
 #### sub
-Subtracte the value of field.
+Substract the value of field by the passed in value.
 
 #### Usage
 `sub(int | float | Callable | Types)`
@@ -754,7 +756,7 @@ class Math:
 ```
 
 #### add
-Add the value of field.
+Add the value of field by the passed in value.
 
 #### Usage
 `add(int | float | Callable | Types)`
