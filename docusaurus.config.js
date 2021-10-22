@@ -49,6 +49,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             label: 'Docs',
           },
           {
+            href: 'https://www.jsonclasses.com',
+            label: 'Homepage',
+            position: 'left'
+          },
+          {
             href: 'https://github.com/fillmula/jsonclasses',
             label: 'GitHub',
             position: 'right',
@@ -59,7 +64,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Contents',
             items: [
               {
                 label: 'Tutorial',
@@ -90,7 +95,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Fillmula, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Fillmula, Inc.`,
       },
       prism: {
         theme: lightCodeTheme,
