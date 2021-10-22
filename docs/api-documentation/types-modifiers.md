@@ -861,7 +861,7 @@ class User:
 ### Datetime Transformers
 
 #### tobosec
-Transform datetime into the beginning of the second
+Transform datetime into the beginning of the second.
 #### Examples
 ```python
 @jsonclass
@@ -869,7 +869,7 @@ class Datetime:
     time: datetime = types.datetime.tobosec.required
 ```
 #### tobomin
-Transform datetime into the beginning of the minute
+Transform datetime into the beginning of the minute.
 #### Examples
 ```python
 @jsonclass
@@ -877,7 +877,7 @@ class Datetime:
     time: datetime = types.datetime.tobomin.required
 ```
 #### tobohour
-Transform datetime into the beginning of the hour
+Transform datetime into the beginning of the hour.
 #### Examples
 ```python
 @jsonclass
@@ -885,7 +885,7 @@ class Datetime:
     time: datetime = types.datetime.tobohour.required
 ```
 #### toboday
-Transform datetime or date into the beginning of the day
+Transform datetime or date into the beginning of the day.
 #### Examples
 ```python
 @jsonclass
@@ -893,7 +893,7 @@ class Datetime:
     time: date = types.date.toboday.required
 ```
 #### tobomon
-Transform datetime or date into the beginning of the month
+Transform datetime or date into the beginning of the month.
 #### Examples
 ```python
 @jsonclass
@@ -901,7 +901,7 @@ class Datetime:
     time: date = types.date.tobomon.required
 ```
 #### toboyear
-Transform datetime or date into the beginning of the year
+Transform datetime or date into the beginning of the year.
 #### Example
 ```python
 @jsonclass
@@ -909,7 +909,7 @@ class Datetime:
     time: date = types.date.toboyear.required
 ```
 #### tonextsec
-Change datetime to the next second
+Change datetime to the next second.
 #### Examples
 ```python
 @jsonclass
@@ -917,7 +917,7 @@ class Datetime:
     time: datetime = types.datetime.tonextsec.required
 ```
 #### tonextmin
-Change datetime to the next minute
+Change datetime to the next minute.
 #### Examples
 ```python
 @jsonclass
@@ -925,7 +925,7 @@ class Datetime:
     time: datetime = types.datetime.tonextmin.required
 ```
 #### tonexthour
-Change datetime to the next hour
+Change datetime to the next hour.
 #### Examples
 ```python
 @jsonclass
@@ -933,7 +933,7 @@ class Datetime:
     time: datetime = types.datetime.tonexthour.required
 ```
 #### tonextday
-Change datetime or date to the next day
+Change datetime or date to the next day.
 #### Examples
 ```python
 @jsonclass
@@ -941,7 +941,7 @@ class Datetime:
     time: date = types.date.tonextday.required
 ```
 #### tonextmon
-Change datetime or date to the next mon
+Change datetime or date to the next mon.
 #### Examples
 ```python
 @jsonclass
@@ -949,7 +949,7 @@ class Datetime:
     time: date = types.date.tonextmon.required
 ```
 #### tonextyear
-Change datetime or date to the next year
+Change datetime or date to the next year.
 #### Examples
 ```python
 @jsonclass
