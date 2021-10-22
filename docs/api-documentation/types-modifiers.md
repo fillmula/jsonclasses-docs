@@ -1858,3 +1858,164 @@ class User:
     username: str = types.str.authidentity.required
     password: str = types.str.authby(types.checkpw(types.passin)).required
 ```
+#### randomalnumpuncs
+Generate random alnumpuncs as result.
+#### Usage
+`randomalnumpuncs(int | Callable | Types)`
+#### Examples
+```python
+@jsonclass
+class User:
+
+```
+#### randomint
+Generate random int as result.
+#### Usage
+`randomint(int | float | Callable | Types, int | float | Callable | Types)`
+#### Examples
+```python
+@jsonclass
+class SchoolClass:
+    number_of_class: int = types.int.randomint(40, 50).required
+```
+#### randomfloat
+Generate random int as result.
+#### Usage
+`randomfloat(int | float | Callable | Types, int | float | Callable | Types)`
+#### Examples
+```python
+@jsonclass
+class Math:
+    num: float = types.float.randomfloat(1.1, 9.9)
+```
+#### crossfetch
+Fetch a class with value matches this object's value at key.
+#### Usage
+`crossfetch(str, str, Optional[str] = None)`
+#### Examples
+```python
+@jsonclass
+class User:
+    nick_name: str = types.str.crossfetch('Snoopy', 'Snoopy').required
+```
+#### fval
+Get value at field from a JSONClass object.
+#### Usage
+`fval(str | Callable | Types)`
+#### Examples
+```python
+@jsonclass
+class Teacher:
+    phone_number: str = types.str.fval('123456798').required
+```
+#### this
+Get the owner object of this field.
+#### Examples
+```python
+@jsonclass
+class Student:
+    name: str = types.str.this.required
+```
+#### at
+Return result with subscription index.
+#### Usage
+`at(Any | Callable | Types)`
+#### Examples
+```python
+@jsonclass
+class Student:
+    name: str = types.str.at(1).required
+```
+#### assign
+Assign value to the current object.
+#### Usage
+`assign(str, Any | Callable | Types)`
+#### Examples
+```python
+@jsonclass
+class Score:
+    math: float = types.float.assign('snoopy', 59).required
+```
+#### uploader
+Upload file stream to cloud storage and get the string url back.
+#### Usage
+`uploader(str | Callable)`
+#### Examples
+```python
+@jsonclass
+class Teacher:
+    photo: str = types.str.uploader('ben.png').required
+```
+#### getop
+Get the operator of this action.
+#### Examples
+```python
+@jsonclass
+class User:
+    article: list[str] = types.listof(str).getop('class_id').required
+```
+
+#### eq
+
+Valid the value of field by equal testing.
+
+#### Usage
+
+`eq(Any | Types | Callable)`
+
+#### Examples
+
+```python
+@jsonclass
+class Student:
+		card_id: str = types.str.eq('az213456').required
+```
+
+#### neq
+Valid value by unequal testing.
+#### Usage
+`neq(Any | Types | Callable)`
+#### Examples
+```python
+@jsonclass
+class Student:
+    name: str = types.str.neq('Snoopy').required
+```
+#### isthis
+Check whether the current value is the owner object.
+#### Examples
+```python
+@jsonclass
+class Teacher:
+    name: str = types.str.isthis.required
+```
+#### oneisvalid
+Valid with subroutines.
+#### Usage
+`oneisvalid(list[Callable | Types])`
+#### Examples
+```python
+@jsonclass
+class Student:
+    hobby: list[str] = types.listof(str).oneisvalid(['play the guitar'])
+```
+#### isobjof
+Valid if the value is object of a class.
+#### Usage
+`isobjof(type[JObject] | str)`
+#### Examples
+```python
+@jsonclass
+class Teacher:
+    name: str = types.str.isobjof('Ben').required
+```
+#### isobj
+Check if value is the same with provided object.
+#### Usage
+`isobj(Types)`
+#### Examples
+```python
+@jsonclass
+class Student:
+    name: str = types.str.isobj('Snoopy').required
+```
