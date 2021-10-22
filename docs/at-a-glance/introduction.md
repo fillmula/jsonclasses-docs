@@ -15,6 +15,8 @@ class Article:
     id: str = types.readonly.str.primary.mongoid.required
     name: str = types.str.trim.minlength(2).required
     content: str = types.str.minlength(300).required
+
+
 article = Article(name='Name', content='Content')
 article.save()
 ```
@@ -28,7 +30,7 @@ pip install jsonclasses
 Integration packages are also installed with pip
 ```sh
 pip install jsonclasses-pymongo
-pip install jsonclasses-flask
+pip install jsonclasses-server
 ```
 
 ## Going Next

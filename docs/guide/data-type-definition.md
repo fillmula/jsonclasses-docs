@@ -84,23 +84,6 @@ class MyObject:
     nested_list_in_dict_value: dict[str, list[int]]
 ```
 
-## Shaped Type
-JSONClasses supports light weight nested structure definition on objects.
-```python
-@jsondict
-class TopicSettings(TypedDict):
-    push_notification: bool
-    send_email: bool
-    send_sms: bool
-
-
-@jsonclass
-class Topic:
-    name: str
-    content: str
-    settings: Settings
-```
-
 ## Optional Type
 You can define optional type with `Optional` type annotation.
 ```python
@@ -154,7 +137,7 @@ An **1-to-1** link relationship is declared with 1 side `linkto` and 1 side `lin
 
 An **1-to-many** link relationship is also declared with 1 side `linkto` and 1 side `linkedby`, while the declared type with `linkedby` is a JSONClasses object list of a specified class.
 
-A **many-to-many** link relationship is declared with double side `linkedthru`. The field type must be a JSONClasses object list type.
+A **many-to-many** link relationship can be declared with 1 side `linkto` and 1 side `linkedby`. It can also be declared with double side `linkedthru` depends on how you persist your data in the database. The field type must be a JSONClasses object list type.
 
 ## Types Modifiers
 

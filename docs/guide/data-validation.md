@@ -13,7 +13,8 @@ class Article:
 
 
 article = Article(title='Best Travel Places', content='Not enough length...')
-article.validate() # throws Validation Exceptionarticle.is_valid # False
+article.validate() # throws Validation Exception
+article.is_valid # False
 ```
 
 ## Collecting Error Messages
@@ -22,7 +23,10 @@ By default, the `validate` method throws when it finds an invalid value. Sometim
 @jsonclass(validate_all_fields=True)
 class MyForm:
     name: str
-    title: strMyForm(**input).validate() # validate all fields
+    title: str
+
+
+MyForm(**input).validate() # validate all fields
 ```
 You can also pass the instruction to validate method as an optional argument.
 ```python
@@ -55,4 +59,12 @@ In this callback, if you return a string, this string is treated the desired err
 class OddLengthPasswordWithMessage:
     name: Optional[str]
     password: str = types.str.validate(lambda p: None if len(p) % 2 == 0 else 'password is not odd length').required
+```
+
+You may want to take advantage with tye types pipeline. Use `vmsg` modifier.
+
+```python
+@jsonclass
+class User:
+    password: str = types.str.vmsg(types.minlength(8), "Password should be at least 8 in length!")
 ```

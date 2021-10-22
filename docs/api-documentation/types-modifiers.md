@@ -251,7 +251,7 @@ class Article:
 
 #### required
 
-Marks a field as required.
+The value of this field should not be None.
 
 #### Examples
 
@@ -273,7 +273,7 @@ Marks a collection item field to be nullable.
 @jsonclass
 class SchoolClass:
     student_names: list[str] = types.listof(str).required
-    student_height: list[str] = types.listof(types.str.nullable).required 
+    student_height: list[str] = types.listof(types.str.nullable).required
 ```
 
 #### present
@@ -1065,7 +1065,7 @@ Mark takes a modifier callable as its sole argument. Use this to define custom f
 ```python
 @jsonclass
 class User:
-  	password: str = types.str.vmsg(types.length(6, 16), 
+  	password: str = types.str.vmsg(types.length(6, 16),
                                    "Password length 6 to 16 digits").required
 ```
 
@@ -1189,7 +1189,7 @@ Validate number value against max value.
 class Baby:
     age: int = types.int.max(1).required
 ```
-#### lte 
+#### lte
 
 Validate number value against min value.
 
@@ -1454,11 +1454,11 @@ class Student:
     email_suffix: str = types.str.issuffixof(types.this.fval('email')).required
 ```
 
-## Before save hook
+## Before Saving Actions
 
 #### setonsave
 
-Updates or sets value on save.
+Sets the field's value on object save.
 
 #### Usage
 
@@ -1470,13 +1470,13 @@ Updates or sets value on save.
 @jsonclass
 class User:
   	updated_at: types.datetime.readonly.timestamp('updated') \
-                                .default(datetime.now) \
-                                .setonsave(lambda: datetime.now()).required
+                     .default(datetime.now) \
+                     .setonsave(lambda: datetime.now()).required
 ```
 
 #### fsetonsave
 
-Updates or sets value on save regardless of modified or not.
+Forcely sets the field's value on object save regardless of the object's modified state.
 
 #### Example
 
@@ -1489,7 +1489,7 @@ class AuthorizationCode:
 
 #### onsave
 
-It is called when saving is triggered.
+The action to perform when saving is triggered.
 
 #### Usage
 
@@ -1505,7 +1505,7 @@ class User:
 
 #### onupdate
 
-It is called when value is modified and saving is triggered.
+This is triggered when the value of this field is modified and object saving is triggered.
 
 #### Usage
 
@@ -1557,10 +1557,10 @@ This field has a local reference key defined on the object.
 @jsonclass
 class User:
     articles: list[Article] = types.nonnull.listof('Article').linkedby('user')
-      
+
 
 @jsonclass
-class Article:    
+class Article:
   	user: User = types.instanceof('User').linkto.required
 ```
 
@@ -1577,9 +1577,9 @@ This field has a foreign key reference on the referenced object.
 class User:
     articles: list[Article] = types.nonnull.listof('Article').linkedby('user')
 
-      
+
 @jsonclass
-class Article:    
+class Article:
   	user: User = types.instanceof('User').linkto.required
 ```
 
@@ -1594,10 +1594,10 @@ This field has a foreign key mapping table with the referenced object.
 @jsonclass
 class User:
     products: list[Article] = types.nonnull.listof('Product').linkedthru('users')
-      
-      
+
+
 @jsonclass
-class Product:    
+class Product:
   users: list[User] = types.nonnull.listof('User').linkedthru('products')
 ```
 
@@ -1822,4 +1822,3 @@ class User:
   username: str = types.str.authidentity.required
   password: str = types.str.authby.required
 ```
-
