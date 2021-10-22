@@ -4,14 +4,14 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 // With JSDoc @type annotations, IDEs can provide config autocompletion
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 (module.exports = {
-  title: 'JSONClasses',
+  title: 'JSONClasses Documentation',
   tagline: 'JSONClasses are cool',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://docs.jsonclasses.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'Fillmula Inc.', // Usually your GitHub org/user name.
+  organizationName: 'fillmula', // Usually your GitHub org/user name.
   projectName: 'jsonclasses-docs', // Usually your repo name.
 
   presets: [
