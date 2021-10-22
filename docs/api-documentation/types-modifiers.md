@@ -1801,7 +1801,7 @@ class User:
     username: str = types.str.authidentity.required
 ```
 
-####  authBy
+####  authby
 
 Fields marked with auth by are used for authorization.
 
@@ -1814,7 +1814,7 @@ Fields marked with auth by are used for authorization.
 @jsonclass
 class User:
     username: str = types.str.authidentity.required
-    password: str = types.str.authby.required
+    password: str = types.str.authby(types.checkpw(types.passin)).required
 ```
 
 #### authbycheckpw
@@ -1830,10 +1830,13 @@ Use passin value as the result.
 #### Examples
 
 ```python
+@authorized
+@api
+@pymongo
 @jsonclass
 class User:
-    name: str
-    password: 
+    username: str = types.str.authidentity.required
+    password: str = types.str.authby(types.checkpw(types.passin)).required
 ```
 
 #### checkpw
@@ -1847,9 +1850,11 @@ Check string value with bcrypt's checkpw function.
 #### Examples
 
 ```python
+@authorized
+@api
+@pymongo
 @jsonclass
 class User:
-    username: str
-    password: str = types.str.authby.checkpw.required
+    username: str = types.str.authidentity.required
+    password: str = types.str.authby(types.checkpw(types.passin)).required
 ```
-
