@@ -1914,8 +1914,8 @@ Generate random alnumpuncs as result.
 #### Examples
 ```python
 @jsonclass
-class User:
-
+class WaterMark:
+  	water_mark: str = types.str.randomalnumpuncs(10).required
 ```
 #### randomint
 Generate random int as result.
@@ -1945,7 +1945,9 @@ Fetch a class with value matches this object's value at key.
 ```python
 @jsonclass
 class User:
-    nick_name: str = types.str.crossfetch('Snoopy', 'Snoopy').required
+    auth_code: Optional[str] = types.str.authby(
+        types.crossfetch('AuthorizationCode', 'email').fval('value').eq(types.passin)
+    ).temp
 ```
 #### fval
 Get value at field from a JSONClass object.
@@ -1954,8 +1956,9 @@ Get value at field from a JSONClass object.
 #### Examples
 ```python
 @jsonclass
-class Teacher:
-    phone_number: str = types.str.fval('123456798').required
+class Student:
+    name: str
+    upper_name: str = types.str.getter(types.this.fval("name").toupper)
 ```
 #### this
 Get the owner object of this field.
@@ -1963,7 +1966,8 @@ Get the owner object of this field.
 ```python
 @jsonclass
 class Student:
-    name: str = types.str.this.required
+    name: str
+    upper_name: str = types.str.getter(types.this.fval("name").toupper).required
 ```
 #### at
 Return result with subscription index.
@@ -1973,7 +1977,8 @@ Return result with subscription index.
 ```python
 @jsonclass
 class Student:
-    name: str = types.str.at(1).required
+    scorces: list[int]
+    second_score: int = types.int.getter(types.this.at(1)).required
 ```
 #### assign
 Assign value to the current object.
@@ -1982,8 +1987,11 @@ Assign value to the current object.
 #### Examples
 ```python
 @jsonclass
-class Score:
-    math: float = types.float.assign('snoopy', 59).required
+class Student:
+    name: str
+    upper_name: str = types.str
+            .getter(types.this.fval("name").toupper)
+            .setter(types.this.assign("name", types.passin.tolower))
 ```
 #### uploader
 Upload file stream to cloud storage and get the string url back.
@@ -1993,7 +2001,7 @@ Upload file stream to cloud storage and get the string url back.
 ```python
 @jsonclass
 class Teacher:
-    photo: str = types.str.uploader('ben.png').required
+    photo: str = types.str.uploader('image').required
 ```
 #### getop
 Get the operator of this action.
@@ -2001,7 +2009,7 @@ Get the operator of this action.
 ```python
 @jsonclass
 class User:
-    article: list[str] = types.listof(str).getop('class_id').required
+    password: str = types.str.canu(types.getop.isthis).required
 ```
 
 #### eq
@@ -2017,7 +2025,7 @@ Valid the value of field by equal testing.
 ```python
 @jsonclass
 class Student:
-		card_id: str = types.str.eq('az213456').required
+		card_identity: str = types.str.eq('az213456').required
 ```
 
 #### neq
@@ -2028,15 +2036,15 @@ Valid value by unequal testing.
 ```python
 @jsonclass
 class Student:
-    name: str = types.str.neq('Snoopy').required
+    name: str = types.str.neq('Jack').required
 ```
 #### isthis
 Check whether the current value is the owner object.
 #### Examples
 ```python
 @jsonclass
-class Teacher:
-    name: str = types.str.isthis.required
+class User:
+    password: str = types.str.canu(types.getop.isthis).required
 ```
 #### oneisvalid
 Valid with subroutines.
@@ -2044,9 +2052,19 @@ Valid with subroutines.
 `oneisvalid(list[Callable | Types])`
 #### Examples
 ```python
-@jsonclass
-class Student:
-    hobby: list[str] = types.listof(str).oneisvalid(['play the guitar'])
+@authorized
+@api
+@pymongo
+@jsonclass(can_update=types.oneisvalid([
+    types.getop.isthis,
+    types.getop.isobjof('Admin')
+]), can_delete=types.oneisvalid([
+    types.getop.isthis,
+    types.getop.isobjof('Admin')
+]))
+class User:
+    id: str = types.readonly.str.primary.mongoid.required
+    username: str = types.str.unique.authidentity.canu(types.getop.isthis).required
 ```
 #### isobjof
 Valid if the value is object of a class.
@@ -2056,7 +2074,7 @@ Valid if the value is object of a class.
 ```python
 @jsonclass
 class Teacher:
-    name: str = types.str.isobjof('Ben').required
+    student: Student = types.objof("Student").isobjof('Student').required
 ```
 #### isobj
 Check if value is the same with provided object.
@@ -2066,5 +2084,5 @@ Check if value is the same with provided object.
 ```python
 @jsonclass
 class Student:
-    name: str = types.str.isobj('Snoopy').required
+    myself: Student = types.objof('Student').isobj(types.this).required
 ```
