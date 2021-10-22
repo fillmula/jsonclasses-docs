@@ -774,8 +774,8 @@ Convert the value of field to int.
 #### Examples
 ```python
 @jsonclass
-class User:
-    item: bool = types.bool.toint.required
+class Math:
+    num: int = types.toint.int.required
 ```
 
 #### tofloat
@@ -784,8 +784,8 @@ Convert the value of field to float.
 #### Examples
 ```python
 @jsonclass
-class User:
-    item: bool = types.bool.tofloat.required
+class Math:
+    num: float = types.tofloat.float.required
 ```
 
 #### abs
@@ -799,7 +799,7 @@ class Math:
 ```
 
 #### floor
-Return the floor of the value of field i.e., the least integer not less than the value of field.
+The floored value of a number value.
 
 #### Examples
 ```python
@@ -809,7 +809,7 @@ class Math:
 ```
 
 #### ceil
-Return the ceiling of the value of field i.e., the largest integer not greater than the value of field.
+The ceiled value of a number value.
 
 #### Examples
 ```python
@@ -819,23 +819,13 @@ class Math:
 ```
 
 #### round
-Round the value of field to only two decimals.
+Round the number value.
 
 #### Examples
 ```python
 @jsonclass
 class Math:
     num: int = typse.int.round.required
-```
-
-#### inverse
-Change the value to false if value is true, vice versa.
-
-#### Examples
-```python
-@jsonclass
-class User:
-    true_or_false: bool = types.bool.inverse.required
 ```
 
 ### Boolean Transformers
@@ -863,7 +853,7 @@ class User:
 ### Datetime Transformers
 
 #### tobosec
-Transform datetime into the beginning of the second
+Transform datetime to the beginning of the second
 #### Examples
 ```python
 @jsonclass
@@ -871,7 +861,7 @@ class Datetime:
     time: datetime = types.datetime.tobosec.required
 ```
 #### tobomin
-Transform datetime into the beginning of the minute
+Transform datetime to the beginning of the minute
 #### Examples
 ```python
 @jsonclass
@@ -879,7 +869,7 @@ class Datetime:
     time: datetime = types.datetime.tobomin.required
 ```
 #### tobohour
-Transform datetime into the beginning of the hour
+Transform datetime to the beginning of the hour
 #### Examples
 ```python
 @jsonclass
@@ -887,7 +877,7 @@ class Datetime:
     time: datetime = types.datetime.tobohour.required
 ```
 #### toboday
-Transform datetime or date into the beginning of the day
+Transform datetime or date to the beginning of the day
 #### Examples
 ```python
 @jsonclass
@@ -895,7 +885,7 @@ class Datetime:
     time: date = types.date.toboday.required
 ```
 #### tobomon
-Transform datetime or date into the beginning of the month
+Transform datetime or date to the beginning of the month
 #### Examples
 ```python
 @jsonclass
@@ -903,7 +893,7 @@ class Datetime:
     time: date = types.date.tobomon.required
 ```
 #### toboyear
-Transform datetime or date into the beginning of the year
+Transform datetime or date to the beginning of the year
 #### Example
 ```python
 @jsonclass
