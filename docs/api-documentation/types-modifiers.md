@@ -1831,11 +1831,9 @@ Use passin value as the result.
 
 ```python
 @jsonclass
-class Student:
+class User:
     name: str
-    upper_name: str = types.str
-            .getter(types.this.fval("name").toupper)
-            .setter(types.this.assign("name", types.passin.tolower))
+    password: 
 ```
 
 #### checkpw
