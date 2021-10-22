@@ -596,7 +596,7 @@ Transforms value into a string.
 ```python
 @jsonclass
 class Student:
-    age_str: str = types.tostr.required
+    age_str: str = types.tostr.str.required
 ```
 
 #### padstart
@@ -773,7 +773,7 @@ Convert the value of field to int.
 ```python
 @jsonclass
 class User:
-    item: bool = types.bool.toint.required
+    item: int = types.toint.int.required
 ```
 
 #### tofloat
@@ -783,7 +783,7 @@ Convert the value of field to float.
 ```python
 @jsonclass
 class User:
-    item: bool = types.bool.tofloat.required
+    item: float = types.tofloat.float.required
 ```
 
 #### abs
@@ -1706,12 +1706,6 @@ class User:
     password: str = types.str.unqueryable.required
 ```
 
-
-
-
-
-
-
 ## Permissons
 
 #### asop
@@ -1794,7 +1788,7 @@ class User:
 
 #### authidentity
 
-Fields marked with authidentity are used for authorization.
+Use for authorization.
 
 #### Examples
 
@@ -1804,7 +1798,7 @@ Fields marked with authidentity are used for authorization.
 @pymongo
 @jsonclass
 class User:
-  username: str = types.str.authidentity.required
+    username: str = types.str.authidentity.required
 ```
 
 ####  authBy
@@ -1819,6 +1813,45 @@ Fields marked with auth by are used for authorization.
 @pymongo
 @jsonclass
 class User:
-  username: str = types.str.authidentity.required
-  password: str = types.str.authby.required
+    username: str = types.str.authidentity.required
+    password: str = types.str.authby.required
 ```
+
+#### authbycheckpw
+
+
+
+## Calc Pipeline
+
+#### passin
+
+Use passin value as the result.
+
+#### Examples
+
+```python
+@jsonclass
+class Student:
+    name: str
+    upper_name: str = types.str
+            .getter(types.this.fval("name").toupper)
+            .setter(types.this.assign("name", types.passin.tolower))
+```
+
+#### checkpw
+
+Check string value with bcrypt's checkpw function.
+
+#### Usage
+
+`checkpw(Types)`
+
+#### Examples
+
+```python
+@jsonclass
+class User:
+    username: str
+    password: str = types.str.authby.checkpw.required
+```
+
