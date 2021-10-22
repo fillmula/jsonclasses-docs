@@ -4,9 +4,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 // With JSDoc @type annotations, IDEs can provide config autocompletion
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 (module.exports = {
+<<<<<<< HEAD
   title: 'JSONClasses Documentation',
   tagline: 'JSONClasses are cool',
   url: 'https://docs.jsonclasses.com',
+=======
+  title: 'JSONClasses',
+  tagline: 'The Modern Declarative Data Flow Framework for the AI Empowered Generation.',
+  url: 'https://your-docusaurus-test-site.com',
+>>>>>>> 0b63add (style website)
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -67,8 +73,20 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             title: 'Contents',
             items: [
               {
-                label: 'Tutorial',
-                to: 'docs/jsonclasses',
+                label: 'Introduction',
+                to: 'docs/at-a-glance/introduction',
+              },
+              {
+                label: 'Guide',
+                to: 'docs/guide/data-type-definition',
+              },
+              {
+                label: 'API Documentation',
+                to: 'docs/api-documentation/types-modifiers',
+              },
+              {
+                label: 'Resources',
+                to: 'docs/resources/github',
               },
             ],
           },
