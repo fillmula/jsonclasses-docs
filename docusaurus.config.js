@@ -11,8 +11,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'fillmula', // Usually your GitHub org/user name.
+  projectName: 'jsonclasses-docs', // Usually your repo name.
 
   presets: [
     [
@@ -22,13 +22,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/',
-        },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/main/website/blog/',
+          editUrl: 'https://github.com/fillmula/jsonclasses-docs/tree/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -45,6 +39,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         logo: {
           alt: 'JSONClasses Logo',
           src: 'img/logo.svg',
+          srcDark: 'img/logo_dark.svg'
         },
         items: [
           {
@@ -54,7 +49,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             label: 'Docs',
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/fillmula/jsonclasses',
             label: 'GitHub',
             position: 'right',
           },
@@ -78,32 +73,24 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               {
                 label: 'Stack Overflow',
                 href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
+              }
             ],
           },
           {
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: 'Official Website',
+                to: 'https://jsonclasses.com/',
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/fillmula/jsonclasses',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Fillmula, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

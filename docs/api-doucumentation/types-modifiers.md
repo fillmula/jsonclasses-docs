@@ -247,6 +247,93 @@ class Article:
     updated_at: datetime = types.readonly.datetime.tsupdated.required
 ```
 
+### Field Nullability
+
+#### required
+
+Marks a field as required.
+
+#### Examples
+
+```python
+@pymongo
+@jsonclass
+class Song:
+    name: str = types.str.required
+```
+
+#### nullable
+
+Marks a collection item field to be nullable.
+
+#### Examples
+
+```python
+@pymongo
+@jsonclass
+class SchoolClass:
+    student_names: list[str] = types.listof(str).required
+    student_height: list[str] = types.listof(types.str.nullable).required 
+```
+
+#### present
+
+Marks a field as present. When validating, if no value is present in this field, validation will fail. This is useful for foreign key fields to do required validation.
+
+#### Example
+
+```python
+@jsonclass
+class User:
+		profile: Profile = types.objof('Profile').linkedby('user').present
+```
+
+#### presentwith
+
+Fields marks with presentwith modifier are forced presented if referring field is present. If referring field has None value, this field's value is optional. If referring field has non None value, value of this field is required.
+
+#### Usage
+
+`presentwith(str)`
+
+#### Example
+
+```python
+@jsonclass
+class UserContact:
+		calling_code: Optional[str] = types.str.presentwith('phone_number')
+    phone_number: Optional[str] = types.str
+```
+
+#### presentwithout
+
+Fields marked with presentwithout modifier are forced presented if referring field is not present. If referring field has None value, this field's value should be present. If referring field has non None value, value of this field is not forced to be present.
+
+#### Usage
+
+`presentwithout(str | list[str])`
+
+#### Example
+
+```python
+@jsonclass
+class UserAccount:
+		email: Optional[str] = types.str.presentwithout('phone_number')
+    phone_number: Optional[str] = types.str.presentwithout('email')
+```
+
+#### nonnull
+
+Transforms None into empty library.
+
+#### Example
+
+```python
+@jsonclass
+class User:
+  	motto: str = types.str.nonnull.required
+```
+
 ## Accessibility
 #### writeonly
 Field marked with `writeonly` can only be written to. Values of these fields are hidden from the JSON output.
@@ -293,6 +380,20 @@ class User:
     id: str = types.readonly.str.primary.mongoid.required
 ```
 
+#### internal
+
+marked with internal will not be accepted as input, and it will not be present in output. These fields are internal and hidden from users.
+
+#### Example
+
+```python
+@jsonclass
+class Message:
+  	credential: str = types.str.internal.required
+```
+
+
+
 #### readwrite
 The value of the field can be set and can be get. This is the default field behavior.
 
@@ -312,6 +413,38 @@ This field is a temporary field. Values of temporary fields won't be serialized 
 class User:
     password: str = types.str.required
     old_password: Optional[str] = types.str.temp
+```
+
+#### getter
+
+Mark a field as calculated field. It's not stored.
+
+#### Examples
+
+```python
+@jsonclass
+class Student:
+    name: str
+    upper_name: str = types.str.getter(types.this.fval("name").toupper)
+```
+
+#### setter
+
+Setter to a calculated field.
+
+#### Usage
+
+`setter(Callable | Types)`
+
+#### Examples
+
+```python
+@jsonclass
+class Student:
+    name: str
+    upper_name: str = types.str
+            .getter(types.this.fval("name").toupper)
+            .setter(types.this.assign("name", types.passin.tolower))
 ```
 
 ## Transformers
@@ -477,7 +610,7 @@ Pad the current string of the start with a given char to reache a given length.
 @jsonclass
 class Entrants:
     two_digit_number: str = types.str.padstart('0', 2).required
-```
+ ```
 
 #### padend
 Pad the current string of the end with a given char to reache a given length.
@@ -901,8 +1034,41 @@ class List:
     name_list: list[str] = types.append("Ben").listof(str).required
 ```
 
-
 ## Validators
+
+#### validate
+
+On invalid, output message as error message.
+
+#### Usage
+
+`validate(Callable | Types)`
+
+#### Example
+
+```python
+@jsonclass
+class User:
+  	password: str = types.validate(is_str_validator)
+```
+
+#### vmsg
+
+Mark takes a modifier callable as its sole argument. Use this to define custom field value validations.
+
+#### Usage
+
+`vmsg(Callable | Types, str)`
+
+#### Example
+
+```python
+@jsonclass
+class User:
+  	password: str = types.str.vmsg(types.length(6, 16), 
+                                   "Password length 6 to 16 digits").required
+```
+
 #### invalid
 Field marked with invalid will never be valid.
 #### Example
@@ -1023,6 +1189,38 @@ Validate number value against max value.
 class Baby:
     age: int = types.int.max(1).required
 ```
+#### lte 
+
+Validate number value against min value.
+
+#### Usage
+
+`lte(int | float | Callable | Types)`
+
+#### Example
+
+```python
+@jsonclass
+class PreSchool:
+    age: int = types.int.lte(10).required
+```
+
+#### gte
+
+Validate number value against max value.
+
+#### Usage
+
+`gte(int | float | Callable | Types)`
+
+#### Example
+
+```python
+@jsonclass
+class TallBoy:
+    height: float = types.float.gte(170).required
+```
+
 #### lt
 Validate number value less than min value.
 
@@ -1047,6 +1245,18 @@ Validate number value greater than max value.
 @jsonclass
 class Adult:
     age: int = types.int.gt(18).required
+```
+
+#### range
+
+Validate number value against a range.
+
+#### Example
+
+```python
+@jsonclass
+class YoungAdult:
+    age: int = types.int.range(18, 21).required
 ```
 
 #### nonnegative
@@ -1089,15 +1299,31 @@ class Asset:
     debt: int = types.int.nonnegative.required
 ```
 
-#### range
-Validate number value against a range.
+#### odd
+
+Marked with int should be odd.
 
 #### Example
+
 ```python
 @jsonclass
-class YoungAdult:
-    age: int = types.int.range(18, 21).required
+class OddNumber:
+  	num: int = types.int.odd.required
 ```
+
+#### even
+
+Marked with int should be even.
+
+#### Example
+
+```python
+@jsonclass
+class EvenNumber:
+  	num: int = types.int.even.required
+```
+
+
 
 ### Datetime Validators
 
@@ -1228,6 +1454,96 @@ class Student:
     email_suffix: str = types.str.issuffixof(types.this.fval('email')).required
 ```
 
+## Before save hook
+
+#### setonsave
+
+Updates or sets value on save.
+
+#### Usage
+
+`setonsave(Callale | Types)`
+
+#### Example
+
+```python
+@jsonclass
+class User:
+  	updated_at: types.datetime.readonly.timestamp('updated') \
+                                .default(datetime.now) \
+                                .setonsave(lambda: datetime.now()).required
+```
+
+#### fsetonsave
+
+Updates or sets value on save regardless of modified or not.
+
+#### Example
+
+```python
+@jsonclass
+class AuthorizationCode:
+    phone_no: str = types.str.digit.required
+    value: str = types.str.fsetonsave(types.randomdigits(4)).required
+```
+
+#### onsave
+
+It is called when saving is triggered.
+
+#### Usage
+
+`onsave(Callable)`
+
+#### Example
+
+```python
+@jsonclass
+class User:
+  	email: str = types.str.onsave(send_email).required
+```
+
+#### onupdate
+
+It is called when value is modified and saving is triggered.
+
+#### Usage
+
+`onupdate(Callable)`
+
+#### Example
+
+```python
+@jsonclass
+class User:
+  	username: str
+    password: str = types.str.onupdate(send_email).required
+```
+
+#### onwrite
+
+It is called when field has a new value and saving is triggered.
+
+#### Usage
+
+`onwrite(Callable)`
+
+#### Example
+
+```python
+@jsonclass
+class Order:
+  	order_num: int = types.int.onwrite(send_message).required
+```
+
+
+
+
+
+
+
+
+
 ## Graph Relationships
 
 #### embedded
@@ -1240,7 +1556,12 @@ This field has a local reference key defined on the object.
 ```python
 @jsonclass
 class User:
-    articles: list[Article] = types.nonnull.listof('Article').linkedby('user')    @jsonclassclass Article:    user: User = types.instanceof('User').linkto.required
+    articles: list[Article] = types.nonnull.listof('Article').linkedby('user')
+      
+
+@jsonclass
+class Article:    
+  	user: User = types.instanceof('User').linkto.required
 ```
 
 #### linkedby
@@ -1254,7 +1575,12 @@ This field has a foreign key reference on the referenced object.
 ```python
 @jsonclass
 class User:
-    articles: list[Article] = types.nonnull.listof('Article').linkedby('user')    @jsonclassclass Article:    user: User = types.instanceof('User').linkto.required
+    articles: list[Article] = types.nonnull.listof('Article').linkedby('user')
+
+      
+@jsonclass
+class Article:    
+  	user: User = types.instanceof('User').linkto.required
 ```
 
 #### linkedthru
@@ -1267,7 +1593,12 @@ This field has a foreign key mapping table with the referenced object.
 ```python
 @jsonclass
 class User:
-    products: list[Article] = types.nonnull.listof('Product').linkedthru('users')    @jsonclassclass Product:    users: list[User] = types.nonnull.listof('User').linkedthru('products')
+    products: list[Article] = types.nonnull.listof('Product').linkedthru('users')
+      
+      
+@jsonclass
+class Product:    
+  users: list[User] = types.nonnull.listof('User').linkedthru('products')
 ```
 
 #### deny
@@ -1304,6 +1635,23 @@ class User:
     score: int = types.int.index.required
 ```
 
+#### cindex
+
+Mark with cindex have compound indexes. This modifier doesn't have any effect around transforming and validating.
+
+#### Usage
+
+`cindex(str)`
+
+#### Example
+
+```python
+@jsonclass
+class Student:
+  	name: str = types.int.cindex("name_score").required
+  	score: int = types.int.cindex("name_score").required
+```
+
 #### unique
 Perform unique indexing on this field.
 
@@ -1313,3 +1661,165 @@ Perform unique indexing on this field.
 class User:
     email: str = types.str.unique.required
 ```
+
+#### cunique
+
+Mark with cunique have compound indexes. This is a unique index. This modifier doesn't have any effect around transforming and validating.
+
+#### Usage
+
+`cunique(str)`
+
+#### Example
+
+```python
+@jsonclass
+class Score:
+  	student_name: str = types.str.cunique("student_course").required
+    course_name: str = types.str.cunique("student_course").required
+```
+
+
+
+#### queryable
+
+Marks a column should be queryable.
+
+#### Example
+
+```python
+@jsonclass
+class User:
+  	username: str = types.str.queryable.required
+```
+
+#### unqueryable
+
+Marks a column should be unqueryable.
+
+#### Example
+
+```python
+@jsonclass
+class User:
+  	username: str
+    password: str = types.str.unqueryable.required
+```
+
+
+
+
+
+
+
+## Permissons
+
+#### asop
+
+ Assigns the transfromed operator to the current field.
+
+#### Example
+
+```python
+@jsonclass
+class User:
+    name: str = types.str.required
+    owned_teams: list[Team] = types.nonnull.listof('Team').linkedby('owner')
+
+
+@jsonclass
+class Team:
+    name: str = types.str.required
+    owner: User = types.instanceof('User').linkto.asop(lambda o: o)
+```
+
+#### asopd
+
+Assigns the operator to the current field directly.
+
+#### Example
+
+```python
+@jsonclass
+class User:
+    name: str = types.str.required
+    owned_teams: list[Team] = types.nonnull.listof('Team').linkedby('owner')
+
+
+@jsonclass
+class Team:
+    name: str = types.str.required
+    owner: User = types.instanceof('User').linkto.asopd
+```
+
+#### canc
+
+Whether this operator can create on this field.
+
+#### Example
+
+```python
+@jsonclass
+class User:
+    email: str = types.str.canc(types.getop.isthis).required
+```
+
+#### canu
+
+Whether this operator can update on this field.
+
+#### Example
+
+```python
+@jsonclass
+class User:
+    password: str = types.str.canu(types.getop.isthis).required
+```
+
+#### canr
+
+Whether this operator can read on this field.
+
+#### Usage
+
+`canr(Callable | Types)`
+
+#### Example
+
+```python
+@jsonclass
+class User:
+    password: str = types.str.canr(types.getop.isthis).required
+```
+
+#### authidentity
+
+Fields marked with authidentity are used for authorization.
+
+#### Examples
+
+```python
+@authorized
+@api
+@pymongo
+@jsonclass
+class User:
+  username: str = types.str.authidentity.required
+```
+
+####  authBy
+
+Fields marked with auth by are used for authorization.
+
+#### Examples
+
+```python
+@authorized
+@api
+@pymongo
+@jsonclass
+class User:
+  username: str = types.str.authidentity.required
+  password: str = types.str.authby.required
+```
+

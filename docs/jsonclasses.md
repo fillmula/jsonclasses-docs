@@ -9,16 +9,19 @@ sidebar_position: 1
 
 ## Get to Know JSONClasses
 
-See [Introduction]("...") and learn why it might be your best choice for data processing.
+See [Introduction](./at-a-glance/introduction) and learn why it might be your best choice for data processing.
+
+## Learn JSONClasses
+We provide several [guide articles](./guide/data-type-definition) to help you diving right into JSONClasses.
 
 ## API Documentation
 
-View detailed usage of each API JSONClasses provided in [API Documentation]("...").
+View detailed usage of each API JSONClasses provided in [API Documentation](./api-documentation/types-modifiers).
 
 ## Github
 
-Submit issues, discuss with the core team on [Github]("...").
+Submit issues, discuss with the core team on [Github](https://github.com/fillmula/jsonclasses).
 
 ## License
 
-JSONClasses is under [MIT License]("...").
+JSONClasses is under [MIT License](https://github.com/fillmula/jsonclasses/blob/master/LICENSE)
