@@ -1819,6 +1819,20 @@ class User:
 
 #### authbycheckpw
 
+Use to authorization and check string value with bcrypt's checkpw function.
+
+#### Example
+
+```python
+@authorized
+@api
+@pymongo
+@jsonclass
+class User:
+    username: str = types.str.authidentity.required
+    password: str = types.str.authbycheckpw.required
+```
+
 
 
 ## Calc Pipeline
