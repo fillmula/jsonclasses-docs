@@ -448,7 +448,24 @@ class Student:
 ```
 
 ## Transformers
+#### transform
+
+Apply the transformer on the value.
+
+#### Usage
+
+`transform(Callable | Types)` 
+
+#### Example
+
+```python
+@jsonclass
+class User:
+    name: str = types.str.transform(upper_transformer).required
+```
+
 #### default
+
 Assign field a default value if the value of field is 'None'.
 #### Usage
 `default(Any | Callable | Types)`
@@ -1785,6 +1802,24 @@ Whether this operator can read on this field.
 class User:
     password: str = types.str.canr(types.getop.isthis).required
 ```
+
+#### canw
+
+Whether this operator can write this field.
+
+#### Usage
+
+`canw(Callable | Types)`
+
+#### Example
+
+```python
+@jsonclass
+class User:
+    password: str = types.str.canw(types.getop.isthis).required
+```
+
+#### 
 
 #### authidentity
 
