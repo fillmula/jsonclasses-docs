@@ -265,11 +265,154 @@ Execute this query.
 
 #### String Descriptors
 
+#### `{'_contains': str}`
+
+If value in this field contains substring, it's returned.
+
+#### Example
+
+```python
+User.find(username={'_contains': 'user'})
+# Return all users which username has 'user' in it.
+```
+
+#### `{'_prefix': str}`
+
+If value in this field is prefixed by the prefix, it's returned.
+
+#### Example
+
+```python
+User.find(username={'_prefix': 'admin'})
+# Return all users which username has a prefix 'admin'.
+```
+
+#### `{'_suffix': str}`
+
+If value in this field has the suffix, it's returned.
+
+#### Example
+
+```python
+User.find(username={'_suffix': '08'})
+# Return all users which username has a suffix '08'.
+```
+
+#### `{'_match': str}`
+
+If value in this field matches the regular expression string, it's returned.
+
+#### Example
+
+```python
+User.find(username={'_match': '^abc.*xyz$'})
+# Return all users which username has a prefix 'abc' and a suffix 'xyz'.
+```
+
+#### `{'_containsi': str}`
+
+If value in this field contains substring, it's returned. Cases are ignored.
+
+#### Example
+
+```python
+User.find(username={'_containsi': 'user'})
+# Return all users which username has 'user' in it. Cases ignored.
+```
+
+#### `{'_prefixi': str}`
+
+If value in this field is prefixed by the prefix, it's returned. Cases are ignored.
+
+#### Example
+
+```python
+User.find(username={'_prefixi': 'admin'})
+# Return all users which username has a prefix 'admin'. Cases ignored.
+```
+
+#### `{'_suffixi': str}`
+
+If value in this field has the suffix, it's returned. Cases are ignored.
+
+#### Example
+
+```python
+User.find(username={'_suffixi': '08'})
+# Return all users which username has a suffix '08'. Cases ignored.
+```
+
+#### `{'_matchi': str}`
+
+If value in this field matches the regular expression string, it's returned. Cases are ignored.
+
+#### Example
+
+```python
+User.find(username={'_matchi': '^abc.*xyz$'})
+# Return all users which username has a prefix 'abc' and a suffix 'xyz'. Cases ignored.
+```
+
 #### Number Descriptors
+
+#### `{'_gt': float | int}`
+
+If value in this field is greater than the passed in value, it's returned.
+
+#### Example
+
+```python
+User.find(age={'_gt': 20})
+# Return all users who is at least 21 years old.
+```
+
+#### `{'_gte': float | int}`
+
+If value in this field is greater than or equal to the passed in value, it's returned.
+
+#### Example
+
+```python
+User.find(age={'_gt': 20})
+# Return all users who is at least 20 years old.
+```
+
+#### `{'_lt': float | int}`
+
+If value in this field is less than the passed in value, it's returned.
+
+#### Example
+
+```python
+User.find(age={'_lt': 20})
+# Return all users who is at most 19 years old.
+```
+
+#### `{'_lte': float | int}`
+
+If value in this field is less than or equal to the passed in value, it's returned.
+
+#### Example
+
+```python
+User.find(age={'_lte': 20})
+# Return all users who is at most 20 years old.
+```
 
 #### Datetime Descriptors
 
-#### Enum Descriptors
+All number descriptors are valid for date.
+
+#### `{'_on': float | int}`
+
+If value of field is on the date, it's returned.
+
+#### Example
+
+```python
+User.find(created_at={'_on': '2021-10-24'})
+# Return all users who is created on Oct 24th, 2021.
+```
 
 ### Processing Instructions
 
