@@ -14,7 +14,7 @@ class Article:
     id: str = types.readonly.str.primary.mongoid.required
     title: str
     content: str
-    author: User = types.instanceof('User').linkto.required
+    author: User = types.objof('User').linkto.required
 ```
 The usage of the object is barely the same, except there is some additional attributes and an additional method named save. By calling it, the validation process is triggered, then the serialization process is triggered. After these two stages are passed, the object and it's modified linked objects are serialized into database.
 article = Article(title='My Article', content='Article Content...', author=current_user)article.save() # article and user are saved into the database
@@ -28,7 +28,7 @@ class Article:
     id: str = types.readonly.str.primary.mongoid.required
     title: str
     content: str
-    author: User = types.instanceof('User').linkto.required
+    author: User = types.objof('User').linkto.required
     created_at: datetime = types.readonly.datetime.tscreated.required
     updated_at: datetime = types.readonly.datetime.tsupdated.required
 ```
@@ -42,7 +42,7 @@ class Article:
     id: str = types.readonly.str.primary.mongoid.required
     title: str
     content: str
-    author: User = types.instanceof('User').linkto.required
+    author: User = types.objof('User').linkto.required
     created_at: datetime = types.readonly.datetime.tscreated.required
     updated_at: datetime = types.readonly.datetime.tsupdated.required
 ```
@@ -56,7 +56,7 @@ class Article:
     id: str = types.readonly.str.primary.mongoid.required
     title: str
     content: str
-    author: User = types.instanceof('User').linkto.required
+    author: User = types.objof('User').linkto.required
     created_at: datetime = types.readonly.datetime.tscreated.required
     updated_at: datetime = types.readonly.datetime.tsupdated.required
 ```

@@ -158,10 +158,10 @@ class MyClass:
 ```
 ### Object Data Types
 
-#### instanceof
-`instanceof` is a type represents a JSONClasses object of specific class.
+#### objof
+`objof` is a type represents a JSONClasses object of specific class.
 #### Usage
-`instanceof(type[JObject], str)`
+`objof(type[JObject], str)`
 #### Parameters
 `type[JObject]`: The JSONClasses class.
 `str`: A string which represents a JSONClasses class.
@@ -172,7 +172,7 @@ class MyClass:
 class User:
     username: str = types.str.unique.required
     articles: list[Article] = types.nonnull.listof('Article').linkedby('author')
-    profile: Profile = types.instanceof('Profile').linkto.required
+    profile: Profile = types.objof('Profile').linkto.required
 ```
 ### Union Data Types
 
@@ -454,7 +454,7 @@ Apply the transformer on the value.
 
 #### Usage
 
-`transform(Callable | Types)` 
+`transform(Callable | Types)`
 
 #### Example
 
@@ -1578,7 +1578,7 @@ class User:
 
 @jsonclass
 class Article:
-  	user: User = types.instanceof('User').linkto.required
+  	user: User = types.objof('User').linkto.required
 ```
 
 #### linkedby
@@ -1597,7 +1597,7 @@ class User:
 
 @jsonclass
 class Article:
-  	user: User = types.instanceof('User').linkto.required
+  	user: User = types.objof('User').linkto.required
 ```
 
 #### linkedthru
@@ -1625,7 +1625,7 @@ If there are any objects are linked on this field, this object's deletion is den
 ```python
 @jsonclass
 class Profile:
-    user: User = types.instanceof('User').linkto.deny.required
+    user: User = types.objof('User').linkto.deny.required
 ```
 #### cascade
 If there are any objects are linked on this field, when this object is deleted, delete them, too.
@@ -1634,7 +1634,7 @@ If there are any objects are linked on this field, when this object is deleted, 
 ```python
 @jsonclass
 class User:
-    profile: Profile = types.instanceof('Profile').linkedby('user').cascade.required
+    profile: Profile = types.objof('Profile').linkedby('user').cascade.required
 ```
 
 #### nullify
@@ -1741,7 +1741,7 @@ class User:
 @jsonclass
 class Team:
     name: str = types.str.required
-    owner: User = types.instanceof('User').linkto.asop(lambda o: o)
+    owner: User = types.objof('User').linkto.asop(lambda o: o)
 ```
 
 #### asopd
@@ -1760,7 +1760,7 @@ class User:
 @jsonclass
 class Team:
     name: str = types.str.required
-    owner: User = types.instanceof('User').linkto.asopd
+    owner: User = types.objof('User').linkto.asopd
 ```
 
 #### canc
@@ -1819,7 +1819,7 @@ class User:
     password: str = types.str.canw(types.getop.isthis).required
 ```
 
-#### 
+####
 
 #### authidentity
 
