@@ -211,7 +211,7 @@ Article.find().pick(['title', 'content']).exec()
 
 #### `omit(field_names: list[str])`
 
-Do not return listed fields in the result.
+Omit listed fields in the result.
 
 #### Example
 
@@ -419,3 +419,104 @@ User.find(created_at={'_on': '2021-10-24'})
 These processing instructions are used inside `find`, `one` or `id` method. It
 represents the features provided by query methods. This allows direct query
 from the web.
+
+#### `{'_includes': list[str | dict[str, Any]]}`
+
+Include list of relationships in the result set. If it's a string, the linked
+objects are included. You can pass query in the linked field with custom
+filters and even nest them with multiple level queries.
+
+#### Example
+
+```python
+User.find({'_includes': [
+    {'articles': {'_includes': [
+        {'comments': {'parentId': None}}
+    ]}}
+]})
+# Return all users with all of their articles, inside articles, includes all
+# first level comments.
+```
+
+#### `{'_order': str | dict[str, Any] | list[str | dict[str, Any]]}`
+
+Order the results.
+
+#### Example
+
+```python
+User.find({'_order': 'createdAt'})
+# find users sorted by 'created_at' ASC.
+User.find({'_order': '-createdAt'})
+# find users sorted by 'created_at' DESC.
+User.find({'_order': [{'createdAt': 'ASC'}, {'name': 'DESC'}]})
+# find users sorted by 'created_at' and 'name'.
+User.find({'_order': [{'createdAt': 1}, {'name': -1}]})
+# find users sorted by 'created_at' and 'name', the same as above.
+```
+
+#### `{'_skip': int}`
+
+Skip `n` results in the result set.
+
+#### Example
+
+```python
+User.find({'_skip': 10})
+# find users without the first 10.
+```
+
+#### `{'_limit': int}`
+
+Only find up to `n` results in the result set.
+
+#### Example
+
+```python
+User.find({'_limit': 10})
+# find only 10 users.
+```
+
+#### `{'_page_number': int} | {'_page_no': int}`
+
+Only return the `n`th page of results.
+
+#### Example
+
+```python
+User.find({'_page_number': 2})
+# only return the second page of results.
+```
+
+#### `{'_page_size': int}`
+
+Set the page size in results.
+
+#### Example
+
+```python
+User.find({'_page_size': 5})
+# only return 5 items in one page.
+```
+
+#### `{'_pick': list[str]}`
+
+Only return picked fields in the result.
+
+#### Example
+
+```python
+User.find({'_pick': ['name', 'age']})
+# only return name and age in the results.
+```
+
+#### `{'_omit': list[str]}`
+
+Omit listed fields in the result.
+
+#### Example
+
+```python
+User.find({'_omit': ['created_at', 'updated_at']})
+# omit created_at and updated_at in the result set.
+```
