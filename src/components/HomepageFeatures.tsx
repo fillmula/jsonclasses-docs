@@ -16,32 +16,32 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'Declarative',
     image: '/img/undraw_docusaurus_mountain.svg',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        JSONClasses is declarative. Instead of writing logics yourself, you
+        describe it's behavior.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Simplicity',
     image: '/img/undraw_docusaurus_tree.svg',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        JSONClasses is easy to learn and understand. It's easy to get hands on.
+        While it's extra powerful.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Efficient',
     image: '/img/undraw_docusaurus_react.svg',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Coding with JSONClasses is efficient. Working with JSONClasses saves
+        previous time and it's fun.
       </>
     ),
   },
