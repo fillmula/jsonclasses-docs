@@ -35,5 +35,5 @@ pip install jsonclasses-server
 
 ## Going Next
 
-- Read our [Guide](./guide/data-type-definition) to learn the basics of JSONClasses.
-- Check our [API Documentation](./api-documentation/types-modifiers) for detailed API explanation.
+- Read our [Guide](../guide/data-type-definition) to learn the basics of JSONClasses.
+- Check our [API Documentation](../api-documentation/types-modifiers) for detailed API explanation.

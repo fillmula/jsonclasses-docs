@@ -24,6 +24,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           // Please change this to your repo.
           editUrl: 'https://github.com/fillmula/jsonclasses-docs/tree/main/',
         },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -85,7 +86,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               },
               {
                 label: 'Resources',
-                to: 'docs/resources/github',
+                to: 'https://github.com/fillmula/jsonclasses',
               },
             ],
           },

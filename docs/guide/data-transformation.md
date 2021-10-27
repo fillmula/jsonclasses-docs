@@ -44,7 +44,7 @@ entry.update(value='  Padded Title')
 
 ## Transformation Modifiers
 
-By default, data type modifiers like `enum`, `date` and `datetime` transforms raw and network input into the correct type. There are a lot of common and useful modifiers like `trim`, `tolower`, `toupper`, etc... For a complete list of validation modifiers, see [Types Modifiers]("...).
+By default, data type modifiers like `enum`, `date` and `datetime` transforms raw and network input into the correct type. There are a lot of common and useful modifiers like `trim`, `tolower`, `toupper`, etc... For a complete list of validation modifiers, see [Types Modifiers](../api-documentation/types-modifiers).
 
 ## Custom Transformers
 
