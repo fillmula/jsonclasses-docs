@@ -54,6 +54,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             position: 'left'
           },
           {
+            type: 'docsVersionDropdown',
+            position: 'right',
+            dropdownItemsBefore: [],
+            dropdownActiveClassDisabled: false,
+          },
+          {
             href: 'https://github.com/fillmula/jsonclasses',
             label: 'GitHub',
             position: 'right',
