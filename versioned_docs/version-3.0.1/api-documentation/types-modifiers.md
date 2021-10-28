@@ -130,10 +130,10 @@ class Dog:
 ```python
 @jsonclass
 class MyClass:
-    field_one: list[str] = types.nonnull.listof(str)
+    field_one: list[str] = types.listof(str)
     field_two: list[int] = types.listof(types.int).required
     field_three: list[MyEnum] = types.listof(MyEnum).required
-    field_four: list[MyObject] = types.nonnull.listof('MyObject')
+    field_four: list[MyObject] = types.listof('MyObject')
 ```
 
 #### dictof
@@ -151,10 +151,10 @@ class MyClass:
 ```python
 @jsonclass
 class MyClass:
-    field_one: dict[str, str] = types.nonnull.dictof(str)
+    field_one: dict[str, str] = types.dictof(str)
     field_two: dict[str, int] = types.dictof(types.int).required
     field_three: dict[str, MyEnum] = types.dictof(MyEnum).required
-    field_four: dict[str, MyObject] = types.nonnull.dictof('MyObject')
+    field_four: dict[str, MyObject] = types.dictof('MyObject')
 ```
 ### Object Data Types
 
@@ -171,7 +171,7 @@ class MyClass:
 @jsonclass
 class User:
     username: str = types.str.unique.required
-    articles: list[Article] = types.nonnull.listof('Article').linkedby('author')
+    articles: list[Article] = types.listof('Article').linkedby('author')
     profile: Profile = types.objof('Profile').linkto.required
 ```
 ### Union Data Types
@@ -331,7 +331,7 @@ Transforms None into empty library.
 ```python
 @jsonclass
 class User:
-  	motto: str = types.str.nonnull.required
+  	motto: str = types.str.required
 ```
 
 ## Accessibility
@@ -1593,7 +1593,7 @@ This field has a local reference key defined on the object.
 ```python
 @jsonclass
 class User:
-    articles: list[Article] = types.nonnull.listof('Article').linkedby('user')
+    articles: list[Article] = types.listof('Article').linkedby('user')
 
 
 @jsonclass
@@ -1612,7 +1612,7 @@ This field has a foreign key reference on the referenced object.
 ```python
 @jsonclass
 class User:
-    articles: list[Article] = types.nonnull.listof('Article').linkedby('user')
+    articles: list[Article] = types.listof('Article').linkedby('user')
 
 
 @jsonclass
@@ -1630,12 +1630,12 @@ This field has a foreign key mapping table with the referenced object.
 ```python
 @jsonclass
 class User:
-    products: list[Article] = types.nonnull.listof('Product').linkedthru('users')
+    products: list[Article] = types.listof('Product').linkedthru('users')
 
 
 @jsonclass
 class Product:
-  users: list[User] = types.nonnull.listof('User').linkedthru('products')
+  users: list[User] = types.listof('User').linkedthru('products')
 ```
 
 #### deny
@@ -1755,7 +1755,7 @@ class User:
 @jsonclass
 class User:
     name: str = types.str.required
-    owned_teams: list[Team] = types.nonnull.listof('Team').linkedby('owner')
+    owned_teams: list[Team] = types.listof('Team').linkedby('owner')
 
 
 @jsonclass
@@ -1774,7 +1774,7 @@ Assigns the operator to the current field directly.
 @jsonclass
 class User:
     name: str = types.str.required
-    owned_teams: list[Team] = types.nonnull.listof('Team').linkedby('owner')
+    owned_teams: list[Team] = types.listof('Team').linkedby('owner')
 
 
 @jsonclass
