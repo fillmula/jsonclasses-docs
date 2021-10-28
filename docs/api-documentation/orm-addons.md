@@ -265,6 +265,8 @@ Execute this query.
 
 #### String Descriptors
 
+All number descriptors are valid for string.
+
 #### `{'_contains': str}`
 
 If value in this field contains substring, it's returned.
