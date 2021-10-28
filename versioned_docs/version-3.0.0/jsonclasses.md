@@ -9,7 +9,7 @@ sidebar_position: 1
 
 ## Get to Know JSONClasses
 
-See [Introduction](./miscellaneous/introduction) and learn why it might be your best choice for data processing.
+See [Introduction](./at-a-glance/introduction) and learn why it might be your best choice for data processing.
 
 ## Learn JSONClasses
 We provide several [guide articles](./guide/data-type-definition) to help you diving right into JSONClasses.
