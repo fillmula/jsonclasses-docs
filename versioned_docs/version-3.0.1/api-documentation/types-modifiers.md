@@ -1150,6 +1150,15 @@ class User:
     email: str = types.str.email.required
 ```
 
+Validate string value aganist valid securepw.
+
+#### Example
+```python
+@jsaonclass
+class User:
+    password: str = types.str.securepw.required
+```
+
 #### digit
 Validate a string value against digit string.
 
