@@ -1150,6 +1150,7 @@ class User:
     email: str = types.str.email.required
 ```
 
+#### securepw
 Validate string value aganist valid securepw.
 
 #### Example
