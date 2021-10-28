@@ -150,7 +150,7 @@ class User:
     username: str = types.str.required
     email: Optional[str] = types.str.email
     password: str = types.writeonly.str.transform(salt).required
-    articles: list[Article] = types.nonnull.listof('Article').linkedby('author').required
+    articles: list[Article] = types.listof('Article').linkedby('author').required
     created_at: datetime = types.readonly.datetime.tscreated.required
     updated_at: datetime = types.readonly.datetime.tsupdated.required
 ```
@@ -166,7 +166,7 @@ class User:
     id: str = types.readonly.str.primary.mongoid.required
     email: Optional[str] = types.str.email
     password: str = types.writeonly.str.transform(salt).required
-    articles: list[Article] = types.nonnull.listof('Article').linkedby('author').required
+    articles: list[Article] = types.listof('Article').linkedby('author').required
     created_at: datetime = types.readonly.datetime.tscreated.required
     updated_at: datetime = types.readonly.datetime.tsupdated.required
 ```
