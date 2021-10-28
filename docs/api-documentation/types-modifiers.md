@@ -1151,7 +1151,7 @@ class User:
 ```
 
 #### securepw
-Validate string value aganist valid securepw.
+Validate string value aganist valid secure password.
 
 #### Example
 ```python
