@@ -1050,6 +1050,17 @@ Add an element to the end of list.
 class List:
     name_list: list[str] = types.prepend("Ben").listof(str).required
 ```
+#### len
+Get the length of iterable value.
+
+#### Example
+```python
+@jsonclass
+class Article:
+    content: str
+    words: int = types.int.getter(types.this.fval('content').split(" ").len)
+```
+
 ## Validators
 
 #### validate
