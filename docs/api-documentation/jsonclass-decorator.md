@@ -55,6 +55,11 @@ Whether automatically records the values before changing for each embedded
 field. The default value is false. If this is true, you can call `reset` method
 to reset every value back to it's previous value.
 
+#### `output_null: bool | None`
+
+On `tojson`, whether output null values or leaving field unexisting. The
+default value is false.
+
 #### `can_create: Types | Callable[[JObject, ORMObject], bool | str | None] | None`
 
 On permission validation, whether this operator can create objects of this
