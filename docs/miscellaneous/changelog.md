@@ -8,6 +8,7 @@ sidebar_position: 3
 * **[Core]** Do not output null value to JSON by default
 * **[Core]** Added `output_null` option to `@jsonclass`
 * **[Pymongo]** Add `inflection` as formal dependency
+* **[Server]** Added unit tests
 
 ### Version 3.0.1 (Oct 28th, 2021)
 * **[Core]** Added modifier `len`
