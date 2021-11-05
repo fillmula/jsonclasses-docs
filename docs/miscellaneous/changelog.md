@@ -8,7 +8,6 @@ sidebar_position: 3
 * **[Pymongo]** Fixed multiword bug when including
 * **[Pymongo]** Fixed multiword bug when ordering
 * **[Pymongo]** Support insertion and removal into linked local key lists
-* **[Server]** Custom routes declaration
 * **[CLI]** Added CLI, a great user experience way to create new project
 
 ### Version 3.0.2 (Oct 29th, 2021)
