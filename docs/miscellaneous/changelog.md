@@ -4,9 +4,10 @@ sidebar_position: 3
 # Change Log
 
 ### Version 3.1.0 ()
-* **[Core]** Support insertion into linked local key lists
+* **[Core]** Support insertion and removal into linked local key lists
 * **[Pymongo]** Fixed multiword bug when including
 * **[Pymongo]** Fixed multiword bug when ordering
+* **[Pymongo]** Support insertion and removal into linked local key lists
 * **[Server]** Custom routes declaration
 * **[CLI]** Added CLI, a great user experience way to create new project
 

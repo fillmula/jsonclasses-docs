@@ -80,7 +80,7 @@ object is not valid.
 
 `all_fields`: Whether validate all fields. The default is `False`.
 
-#### `tojson(ignore_writeonly: bool | None, reverse_relationship: bool : None)`
+#### `tojson(ignore_writeonly: bool | None, reverse_relationship: bool | None, output_null: bool | None)`
 
 Convert the object to a dict represents its JSON data.
 
@@ -90,7 +90,10 @@ Convert the object to a dict represents its JSON data.
 caution. The default value is `False`.
 
 `reverse_relationship`: Whether include reverse relationship in the output
-json.
+json. The default value is `False`.
+
+`output_null`: Whether output null into the result dict. The default value is
+`False`.
 
 #### `opby(ORMObject)`
 
