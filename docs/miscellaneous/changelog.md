@@ -3,6 +3,13 @@ sidebar_position: 3
 ---
 # Change Log
 
+### Version 3.1.0 ()
+* **[Core]** Support insertion into linked local key lists
+* **[Pymongo]** Fixed multiword bug when including
+* **[Pymongo]** Fixed multiword bug when ordering
+* **[Server]** Custom routes declaration
+* **[CLI]** Added CLI, a great user experience way to create new project
+
 ### Version 3.0.2 (Oct 29th, 2021)
 * **[Core]** Do not output partial non-picked fields to JSON
 * **[Core]** Do not output null value to JSON by default
