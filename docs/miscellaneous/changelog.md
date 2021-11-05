@@ -3,7 +3,7 @@ sidebar_position: 3
 ---
 # Change Log
 
-### Version 3.1.0 ()
+### Version 3.1.0 (Nov 5th, 2021)
 * **[Core]** Support insertion and removal into linked local key lists
 * **[Pymongo]** Fixed multiword bug when including
 * **[Pymongo]** Fixed multiword bug when ordering
