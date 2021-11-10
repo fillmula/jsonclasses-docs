@@ -31,6 +31,7 @@ Create a new directory and setup Python's virtual env inside of it.
 mkdir first-project
 cd first-project
 python3.10 -m venv .venv
+source .venv/bin/activate
 ```
 
 ### Generate Starter Code
