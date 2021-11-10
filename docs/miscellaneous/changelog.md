@@ -4,6 +4,14 @@ sidebar_position: 6
 
 # Change Log
 
+### Version 3.1.3 (Nov 10th, 2021)
+* **[Core]** Object include can include join table records
+* **[Pymongo]** Object include support for join table records
+* **[CLI]** Added interactive console
+* **[CLI]** Install all FastAPI dependencies for FastAPI projects
+* **[Server]** Bug fixes
+* **[CLI]** Bug fixes
+
 ### Version 3.1.2 (Nov 10th, 2021)
 * **[Docs]** Renovated documentation
 * **[Server]** Fixed JWT importing bug
