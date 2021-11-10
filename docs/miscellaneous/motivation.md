@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 ---
+
 # Motivation
 
 > What's behind the creation of this fancy data framework.

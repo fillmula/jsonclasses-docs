@@ -1,7 +1,13 @@
 ---
-sidebar_position: 3
+sidebar_position: 6
 ---
+
 # Change Log
+
+### Version 3.1.2 (Nov 11th, 2021)
+* **[Docs]** Renovated documentation
+* **[Server]** Fixed FastAPI uploading bug
+* **[CLI]** Bug fixes
 
 ### Version 3.1.1 (Nov 10th, 2021)
 * **[Core]** Operator assigning by `asop` and `asopd` now uses id

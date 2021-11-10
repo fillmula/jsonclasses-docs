@@ -45,9 +45,21 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         items: [
           {
             type: 'doc',
-            docId: 'jsonclasses',
+            docId: 'miscellaneous/introduction',
             position: 'left',
-            label: 'Docs',
+            label: 'Introduction',
+          },
+          {
+            type: 'doc',
+            docId: 'guide/data-type-definition',
+            position: 'left',
+            label: 'Guide'
+          },
+          {
+            type: 'doc',
+            docId: 'api-documentation/types-modifiers',
+            position: 'left',
+            label: 'API Documentation'
           },
           {
             href: 'https://www.jsonclasses.com',

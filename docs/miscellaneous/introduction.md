@@ -1,39 +1,28 @@
 ---
 sidebar_position: 1
 ---
+
 # Introduction
 
-You may want to know what JSONClasses is and how it can be used. The best way to introduce is providing examples.
+> The modern declarative data flow pipeline and data graph framework for the AI empowered generation.
 
-## A Database Example
+**JSONClasses is a data flow pipeline and data graph framework written in Python.** It supports data sanitization, data validation, data transformation, data presentation, data serialization, data graphing and data querying. It eliminates the redundant coding of the process by an intuitive and innovative declarative manner.
 
-A simplest JSONClasses usage looks like this. In this example, the data is structured as `Article` class with field definitions. The detailed typing, validating and transforming rules are written in the intuitive chained pipelines. The class also gains ORM integration functionalities through the magical decorator `@pymongo`.
-```python
-@pymongo
-@jsonclass
-class Article:
-    id: str = types.readonly.str.primary.mongoid.required
-    name: str = types.str.trim.minlength(2).required
-    content: str = types.str.minlength(300).required
+## Get to Know JSONClasses
 
+See [Examples](./examples) and learn why it might be your best choice for data processing.
 
-article = Article(name='Name', content='Content')
-article.save()
-```
+## Learn JSONClasses
+We provide several [guide articles](../guide/data-type-definition) to help you diving right into JSONClasses.
 
-## Installation
+## API Documentation
 
-Install JSONClasses with pip.
-```sh
-pip install jsonclasses
-```
-Integration packages are also installed with pip
-```sh
-pip install jsonclasses-pymongo
-pip install jsonclasses-server
-```
+View detailed usage of each API JSONClasses provided in [API Documentation](../api-documentation/types-modifiers).
 
-## Going Next
+## Github
 
-- Read our [Guide](../guide/data-type-definition) to learn the basics of JSONClasses.
-- Check our [API Documentation](../api-documentation/types-modifiers) for detailed API explanation.
+Submit issues, discuss with the core team on [Github](https://github.com/fillmula/jsonclasses).
+
+## License
+
+JSONClasses is under [MIT License](https://github.com/fillmula/jsonclasses/blob/master/LICENSE)

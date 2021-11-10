@@ -1,6 +1,7 @@
 ---
-sidebar_position: 4
+sidebar_position: 7
 ---
+
 # Roadmap
 
 ### API Client Generation
