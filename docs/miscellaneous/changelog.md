@@ -4,9 +4,10 @@ sidebar_position: 6
 
 # Change Log
 
-### Version 3.1.2 (Nov 11th, 2021)
+### Version 3.1.2 (Nov 10th, 2021)
 * **[Docs]** Renovated documentation
-* **[Server]** Fixed FastAPI uploading bug
+* **[Server]** Fixed JWT importing bug
+* **[Server]** Fixed FastAPI initializing bugs
 * **[CLI]** Bug fixes
 
 ### Version 3.1.1 (Nov 10th, 2021)
