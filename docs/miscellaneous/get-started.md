@@ -22,7 +22,26 @@ Read the [installation guide](./installation) to create a starter JSONClasses se
 
 ## The First Model
 
+Let's declare the very first model of our own. To declare a model is easy in JSONClasses.
+Just declare a plain python class with type hint and decorate it with the convenient
+decorators. You can try to declare your own or paste the code into your project.
+
+```python
+@api
+@pymongo
+@jsonclass
+class Article:
+    id: str = types.readonly.str.primary.mongoid.required
+    title: str = types.str.trim.required
+    content: str
+    created_at: datetime = types.readonly.datetime.tscreated.required
+    updated_at: datetime = types.readonly.datetime.tsupdated.required
+```
+
 ## Start the Server
+
+Now type `flask run` to start the server. You can send HTTP requests documented
+in this [guide](../guide/synthesized-api-routes) to the server.
 
 ## Going Next
 
