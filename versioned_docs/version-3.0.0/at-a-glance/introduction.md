@@ -7,7 +7,7 @@ You may want to know what JSONClasses is and how it can be used. The best way to
 
 ## A Database Example
 
-A simplest JSONClasses usage looks like this. In this example, the data is structured as `Article` class with field definitions. The detailed typing, validating and transforming rules are written in the intuitive chained pipelines. The class also gains ORM integration functionalities through the magical decorator` @pymongo`.
+A simplest JSONClasses usage looks like this. In this example, the data is structured as `Article` class with field definitions. The detailed typing, validating and transforming rules are written in the intuitive chained pipelines. The class also gains ORM integration functionalities through the magical decorator `@pymongo`.
 ```python
 @pymongo
 @jsonclass
