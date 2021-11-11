@@ -10,7 +10,7 @@ sidebar_position: 6
 * **[Core]** Added `fmt` modifier
 * **[Core]** `map` modifier supports pipeline
 * **[Core]** `filter` modifier supports pipeline
-* **[Core]** Added local FS uploader
+* **[Core]** Added local file system uploader
 
 ### Version 3.1.3 (Nov 10th, 2021)
 * **[Core]** Object include can include join table records
