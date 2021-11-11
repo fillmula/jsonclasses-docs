@@ -4,6 +4,11 @@ sidebar_position: 6
 
 # Change Log
 
+### Version 3.1.4 (Nov 11th, 2021)
+* **[Core]** `oneof` supports modifier pipeline and callable
+* **[Core]** Added missing tests for `hexcolor` transforming
+* **[Core]** Added `fmt` modifier
+
 ### Version 3.1.3 (Nov 10th, 2021)
 * **[Core]** Object include can include join table records
 * **[Pymongo]** Object include support for join table records

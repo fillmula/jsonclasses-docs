@@ -1401,7 +1401,7 @@ class Date:
 Validate string value against a list of available values.
 
 #### Usage
-`oneof(list[Any])`
+`oneof(list[Any] | Callable | Types)`
 
 #### Example
 ```python
@@ -1414,7 +1414,7 @@ class SchoolUser:
 Validate iterable value against the provided length.
 
 #### Usage
-`length(int | Callable | Types, int | Callable | Types)`
+`length(int | Callable | Types, int | Callable | Types | None)`
 
 #### Example
 ```python
