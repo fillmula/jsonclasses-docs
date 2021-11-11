@@ -683,7 +683,7 @@ class Number:
 ```
 
 #### map
-Return a map list after applying the given function to each item of the list of the field.
+Map a list of values.
 
 #### Usage
 `map(Callable | Types)`
