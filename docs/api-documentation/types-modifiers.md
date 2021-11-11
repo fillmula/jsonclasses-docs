@@ -670,28 +670,30 @@ class User:
 ```
 
 #### filter
-Filter the list of the field with the help of a function.
+Filter a list of values.
 #### Usage
-`filter(callable)`
+`filter(Callable | Types)`
 
 #### Examples
 ```python
 @jsonclass
-class User:
-    name: list[str] = typse.listof(str).filter(['a', 'b', 'c', 'd']).required
+class Number:
+    even: list[int] = typse.listof(int).filter(lambda i: i % 2 == 0).required
+    odd: list[int] = types.listof(int).filter(types.mod(2).neq(0)).required
 ```
 
 #### map
 Return a map list after applying the given function to each item of the list of the field.
 
 #### Usage
-`map(callable)`
+`map(Callable | Types)`
 
 #### Examples
 ```python
 @jsonclass
-class User:
-    name: list[str] = types.listof(str).map(['Victor', 'Ben', 'Snoopy']).required
+class Number:
+    plus_one: list[int] | None = types.listof(str).map(lambda i: i + 1)
+    plus_two: list[int] | None = types.listof(str).map(types.add(2))
 ```
 
 #### sqrt
@@ -701,7 +703,8 @@ Return the square root of any number that can not less than 0.
 ```python
 @jsonclass
 class Math:
-    num1: int = types.int.sqrt.required    num2: float = types.float.sqrt.required
+    num1: int = types.int.sqrt.required
+    num2: float = types.float.sqrt.required
 ```
 
 #### pow
