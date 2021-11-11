@@ -1505,6 +1505,24 @@ class Student:
     email_suffix: str = types.str.issuffixof(types.this.fval('email')).required
 ```
 
+## Formatters
+
+#### fmt
+
+Format a field's value to the output json.
+
+#### Usage
+
+`fmt(Callable | Types)`
+
+#### Example
+
+```python
+@jsonclass
+class Profile:
+    theme_color: str = types.str.hexcolor.fmt(types.prepend('#')).required
+```
+
 ## Before Saving Actions
 
 #### setonsave

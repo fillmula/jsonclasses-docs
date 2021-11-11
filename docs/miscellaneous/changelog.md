@@ -11,6 +11,11 @@ sidebar_position: 6
 * **[Core]** `map` modifier supports pipeline
 * **[Core]** `filter` modifier supports pipeline
 * **[Core]** Added local file system uploader
+* **[Server]** Flask supports local file system uploader
+* **[Server]** FastAPI supports local file system uploader
+* **[Server]** Fixed FastAPI AWS uploading bug
+* **[CLI]** Do not install `orjson` by default for FastAPI projects
+* **[CLI]** Added start server message to FastAPI projects
 
 ### Version 3.1.3 (Nov 10th, 2021)
 * **[Core]** Object include can include join table records
