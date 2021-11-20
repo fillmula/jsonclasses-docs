@@ -410,7 +410,7 @@ User.find(age={'_lte': 20})
 
 All number descriptors are valid for date.
 
-#### `{'_on': float | int}`
+#### `{'_on': date | datetime | string}`
 
 If value of field is on the date, it's returned.
 

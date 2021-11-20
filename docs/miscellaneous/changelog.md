@@ -4,6 +4,18 @@ sidebar_position: 6
 
 # Change Log
 
+### Version 3.2.0 (Nov 25th, 2021)
+* **[Core]** Added subtype to field definition
+* **[Core]** `datetime` now uses UTC timezone by default
+* **[Pymongo]** Added string id support
+* **[Pymongo]** Remove `_containsi`, `_prefixi`, `_suffixi` and `_matchi`
+* **[Pymongo]** Use `{'_mode': 'caseInsensitive'}` to represent case insensitive search
+* **[Pymongo]** Supported primitive `_neq` and `_null` query
+* **[Pymongo]** Supported query with `null`
+* **[CLI]** Generate TypeScript package
+* **[CLI]** Generate Swift package
+* **[CLI]** Generate Kotlin package
+
 ### Version 3.1.4 (Nov 11th, 2021)
 * **[Core]** `oneof` supports modifier pipeline and callable
 * **[Core]** Added missing tests for `hexcolor` transforming
