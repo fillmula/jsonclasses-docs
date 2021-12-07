@@ -51,7 +51,7 @@ It can be integrated into Flask or FastAPI.
 @jsonclass
 class User:
     id: str = types.readonly.str.primary.mongoid.required
-    email: str = types.str.email.unique.required
+    email: str = types.str.email.authidentity.unique.required
     password: str = types.writeonly.str.securepw.length(8, 16).salt.authbycheckpw.required
     articles: list[Article] = types.listof('Article').linkedby('author')
 
