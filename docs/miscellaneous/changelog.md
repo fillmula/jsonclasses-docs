@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Change Log
 
-### Version 3.2.0 (Dec 2nd, 2021)
+### Version 3.2.0 (Jan 6th, 2021)
 * **[Core]** Added subtype to field definition
 * **[Core]** `datetime` now uses UTC timezone by default
 * **[Core]** User config now accepts both camelcase and underscore case
@@ -12,6 +12,7 @@ sidebar_position: 6
 * **[Core]** `@jsonclass` now accepts string literal `'identical'`, `'camelize'` and `'underscore'` as parameter
 * **[Core]** Record an object's previous id if it's modified
 * **[Core]** Use `inflection-plus` which is a very fast string inflection library
+* **[Core]** Fixed a bug which ignores ids value on init and set
 * **[Pymongo]** Added string id support
 * **[Pymongo]** Remove `_containsi`, `_prefixi`, `_suffixi` and `_matchi`
 * **[Pymongo]** Use `{'_mode': 'caseInsensitive'}` to represent case insensitive search
@@ -22,6 +23,7 @@ sidebar_position: 6
 * **[Pymongo]** Use key encoding and decoding strategy in configuration
 * **[Pymongo]** Read database URL from user configuration file
 * **[Pymongo]** Do not export `Connection` class from the package anymore
+* **[Server]** Switched to thunderlight server
 * **[CLI]** Generate TypeScript package
 * **[CLI]** Generate Swift package
 
