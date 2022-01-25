@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Change Log
 
-### Version 3.2.0 (Jan 24th, 2021)
+### Version 3.2.0 (Jan 24th, 2022)
 * **[Core]** Added subtype to field definition
 * **[Core]** `datetime` now uses UTC timezone by default
 * **[Core]** User config now accepts both camelcase and underscore case
