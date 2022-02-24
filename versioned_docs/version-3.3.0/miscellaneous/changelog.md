@@ -4,6 +4,13 @@ sidebar_position: 6
 
 # Change Log
 
+### Version 3.3.0 (Feb 24th, 2022)
+* **[Server]** Revert to stable Python web server
+
+### Version 3.2.1 (Jan 25th, 2022)
+* **[Server]** Stability improvements
+* **[Server]** Bug fixes
+
 ### Version 3.2.0 (Jan 24th, 2022)
 * **[Core]** Added subtype to field definition
 * **[Core]** `datetime` now uses UTC timezone by default
